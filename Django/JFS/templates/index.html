@@ -1,0 +1,174 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <title>Job For Students</title>
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-default header">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a href="" class="navbar-brand">
+            <img src="{% static 'img/logo.png' %}" alt="Лого">
+          </a>
+        </div>
+        <div>
+          <ul class="nav navbar-nav icons">
+            <li><a href=""><img src="{% static 'img/megafon.png'%}" alt='megafon'></a></li>
+            <li><a href=""><img src="{% static 'img/favorite.png' %}" alt='favorite'></a></li>
+            <li><a href=""><img src="{% static 'img/icon.png' %}" alt='profile'></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="main">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-3" style="padding-left: 0; padding-right: 0;">
+            <div class="sidebar">
+                <h3>Фильтры:</h3>
+                <h4>Языки:</h4>
+                <ul>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>C++</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>C#</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>Python</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>Node.js</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>React</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>Unity</h5>
+                    </div>
+                  </li>
+                </ul>
+                <h4>График работы</h4>
+                <ul>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>Удалёнка</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>Full-time</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>Сменный</h5>
+                    </div>
+                  </li>
+                </ul>
+                <h4>Место:</h4>
+                <ul>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>Симферополь</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>Крым</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>Россия</h5>
+                    </div>
+                  </li>
+                </ul>
+                <h4>ЗП:</h4>
+                <ul>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>до 50 000 руб</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>50 000 - 100 000 руб</h5>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <input type="checkbox">
+                      <h5>от 100 000 руб</h5>
+                    </div>
+                  </li>
+                </ul>
+             </div>
+          </div>
+          <div class="col-md-9" style="padding-left: 0; padding-right: 0;">
+            <div class="window">
+              <div class="select-window">
+                <ul style="padding-inline-start: 0;">
+                  <a href=""><li>Все вакансии</li></a>
+                  <a href=""><li>Для меня</li></a>
+                </ul>
+              </div>
+              <div class="container">
+                <div class="col-md-10" style="margin-left: auto; margin-right: auto;">
+                  {% for vac in listik %}
+                  <div class="vacancy">
+                    <h3 style="display: inline-block;">{{ vac.h1 }}</h3>
+                    <h4>{{ vac.salary }}<br></h4>
+                    <p>{{ vac.organization }}<br>
+                    {{ vac.location }}</p>
+                    <span>{{ vac.description }}</span>
+                  </div>
+                  {% endfor %}
+              </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>  
+    </div>
+
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
