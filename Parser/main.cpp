@@ -60,14 +60,15 @@ void Parse(string Html){
 
         pNode = doc.find("div.vacancy-serp div[data-qa=vacancy-serp__vacancy_snippet_requirement]").nodeAt(i); // Описание
         content = page.substr(pNode.startPos(), pNode.endPos() - pNode.startPos());
-        string excess_exposition = "<span class=\"highlighted highlighted_short\">С++</span>";
+//        string excess_exposition = "<span class=\"highlighted highlighted_short\">С++</span>";
         end = content.c_str();
-        it = end.find(excess_exposition, 0);
-        while (it != string::npos){
-            end.replace(it, excess_exposition.size(), "C++");
-            it = end.find(excess_exposition, it);
-        }
-
+        regex regular_e("<span .*>");
+        end = regex_replace(end, regular_e, "C++");
+//        it = end.find(excess_exposition, 0);
+//        while (it != string::npos){
+//            end.replace(it, excess_exposition.size(), "C++");
+//            it = end.find(excess_exposition, it);
+//        }
         vacancy[i+1].exposition = end;
 
 
