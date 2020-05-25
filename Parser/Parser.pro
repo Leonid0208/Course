@@ -10,8 +10,9 @@ LIBS += -lgq
 LIBS += -lgumbo
 
 
-SOURCES += main.cpp \
-    test.cpp
+SOURCES += main.cpp
 
 DISTFILES += \
-    Index.html
+    Index.html \
+    file.txt \
+    Put-In_DB.py

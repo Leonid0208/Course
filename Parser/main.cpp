@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <regex>
+#include <stdlib.h>
 using namespace std;
 
 
@@ -12,7 +13,7 @@ std::string OpenFile(){
     std::string line;
     std::string Html;
 
-    std::ifstream in("/home/leonid/Parser/Index.html"); // путь
+    std::ifstream in("/home/leonid/Документы/Курсовая/Parser/Index.html"); // путь
     if (in.is_open()){
         while (getline(in, line)){
             Html += line;
@@ -31,6 +32,10 @@ struct Vacancy
     string salary;
     string link;
 };
+void data_to_DB(){
+    system("python3 /home/leonid/Документы/Курсовая/Parser/Put-In_DB.py");
+}
+
 
 void Parse(string Html){
     std::string page = Html;
@@ -39,7 +44,9 @@ void Parse(string Html){
     string end;
     doc.parse(page.c_str());
     Vacancy vacancy[100];
-    for(int i=0;i<100; i++){
+    ofstream out("/home/leonid/Документы/Курсовая/Parser/file.txt");
+
+    for(int i=0;i<61; i++){
         CNode pNode = doc.find("div.vacancy-serp a.HH-LinkModifier").nodeAt(i); // Заголовок
         std::string content = page.substr(pNode.startPos(), pNode.endPos() - pNode.startPos());
         vacancy[i+1].header = content.c_str();
@@ -102,7 +109,10 @@ void Parse(string Html){
         cout << vacancy[i+1].link << endl;
 
         cout << endl;
-    }
+
+        out << vacancy[i+1].header << "!" << vacancy[i+1].place << "!" << vacancy[i+1].employer << "!" << vacancy[i+1].salary << "!" << vacancy[i+1].exposition << "!" << vacancy[i+1].link << endl;
+    };
+
 }
 
 
@@ -111,4 +121,5 @@ int main()
   string Html;
   Html = OpenFile();
   Parse(Html);
+  data_to_DB();
 }
